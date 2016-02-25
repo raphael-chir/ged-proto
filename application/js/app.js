@@ -1,5 +1,5 @@
 'use strict';
-var mainModule = angular.module('mainModule', ['ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule']);
+var mainModule = angular.module('mainModule', ['ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule']);
 
 mainModule.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;

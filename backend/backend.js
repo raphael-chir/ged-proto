@@ -1,8 +1,8 @@
 var restify = require('restify');
 var fs = require('fs');
 const exec = require('child_process').exec;
-const tempDir = 'C:\\Users\\RCH11270\\IdeaProjects\\front-stack-demo\\initial-grunt-project\\temp';
-const fopDir = 'C:\\Users\\RCH11270\\IdeaProjects\\front-stack-demo\\initial-grunt-project\\fop-2.1';
+const tempDir = 'C:\\Users\\RCH11270\\IdeaProjects\\afpa-ged-project\\temp';
+const fopDir = 'C:\\Users\\RCH11270\\IdeaProjects\\afpa-ged-project\\fop-2.1';
 
 var server = restify.createServer();
 
