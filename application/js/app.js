@@ -1,87 +1,58 @@
 'use strict';
-var mainModule = angular.module('mainModule', ['ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule']);
+var mainModule = angular.module('mainModule', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule', 'ui.grid', 'ui.grid.selection', 'ui.grid.pinning']);
 
 mainModule.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
     }
 ]);
 
-mainModule.controller('XSLTController', [ '$scope', '$log', 'gedServices', '$http', '$timeout', function($scope, $log, gedServices, $http, $timeout) {
-     $scope.pdfTmpUrl = "../temp/sample.pdf";
-     $scope.tabs=1;
-     $scope.pdfRefreshed=true;
-     $scope.codemirrorLoaded = function(_editor){
-        var _doc = _editor.getDoc();
-        _editor.focus();
-
-        gedServices.getXSLT(
-            function(success){
-                var result = '';
-                for(var i in success){
-                    if(typeof success[i][0] !== 'undefined')
-                        result += success[i][0];
-                }
-                _editor.setOption('value', result);
-                _editor.refresh();
-                $log.debug(result);
-            },
-            function(error){
-                $log.debug('KO');
-            }
-        );
-        // Options
-        _editor.setOption('lineNumbers', true);
-        _editor.setOption('mode', 'xml');
-        _editor.setSize('100%', 700);
-        _doc.markClean();
-        // Events
-        //_editor.on("beforeChange", function(){ ... });
-        //_editor.on("change", function(){ ... });
-        $scope.generate = function(){
-            $scope.pdfRefreshed=false;
-            $log.debug('Working ...');
-            $log.debug(_editor.getValue());
-            $http.post('http://127.0.0.1:9999/xsl',{'message' : _editor.getValue()}).then(
-                function(success){
-                    $log.debug('Control done ...');
-                    $scope.pdfTmpUrl = "../temp/sample.pdf?d="+(new Date()).getTime();
-                    //$timeout( function(){ $scope.pdfRefreshed=true; }, 500);
-                    $scope.pdfRefreshed=true;
-                },
-                function(error){});
-        };
-      };
-
-    $scope.codemirrorXMLLoaded = function(_editor){
-          var _doc = _editor.getDoc();
-          _editor.focus();
-
-          gedServices.getDataSource(
-              function(success){
-                  var result = '';
-                  for(var i in success){
-                      if(typeof success[i][0] !== 'undefined')
-                          result += success[i][0];
-                  }
-                  _editor.setOption('value', result);
-                  _editor.refresh();
-                  $log.debug(result);
-              },
-              function(error){
-                  $log.debug('KO');
-              }
-          );
-          // Options
-          _editor.setOption('lineNumbers', true);
-          _editor.setOption('mode', 'xml');
-          _editor.setSize('100%', 700);
-          _doc.markClean();
-
-          // Events
-          //_editor.on("beforeChange", function(){ ... });
-          //_editor.on("change", function(){ ... });
-        };
-
-
+mainModule.config(['$routeProvider', function($routeProvider){
+    $routeProvider.
+        when('/workspace',{
+            templateUrl:'html/workspace.html'
+        }).
+        when('/edition',{
+            templateUrl:'html/edition.html'
+        }).
+        otherwise({
+            redirectTo: '/edition'
+        });
 }]);
 
+mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeout', 'uiGridConstants',
+    function ($scope, $http, $log, $timeout, uiGridConstants) {
+             $scope.gridOptions = {
+               enableRowSelection: true,
+               enableSelectAll: true,
+               selectionRowHeaderWidth: 35,
+               rowHeight: 35,
+               showGridFooter:true
+             };
+
+             $scope.gridOptions.columnDefs = [
+               { name: 'grn', displayName:'GRN', width:70},
+               { name: 'offre', displayName:'Offre', width:70},
+               { name: 'numero-stagiaire', displayName:'Client Stagiaire', width:150, pinnedLeft:true},
+               { name: 'numero-resa', displayName:'N° RESA', width:100},
+               { name: 'nom', displayName:'Nom', width:100, pinnedLeft:true },
+               { name: 'prenom', displayName:'Prénom', width:100, pinnedLeft:true},
+               { name: 'mesure', displayName:'Mesure', width:100},
+               { name: 'convention', displayName:'Convention', width:120},
+               { name: 'remu', displayName:'Rému', width:100},
+               { name: 'date-debut', displayName:'Date début', width:100},
+               { name: 'date-fin', displayName:'Date fin', width:100},
+               { name: 'statut', displayName:'Statut', width:100},
+               { name: 'courrier', displayName:'Courrier', width:100},
+               { name: 'alea', displayName:'Aléa', width:100},
+               { name: 'edit', displayName:'Edité', width:100}
+             ];
+
+             $scope.gridOptions.multiSelect = true;
+
+             $http.get('/data/students.json')
+               .success(function(data) {
+                 $scope.gridOptions.data = data;
+               });
+
+               $scope.info = {};
+           }]);

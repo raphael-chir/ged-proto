@@ -17,7 +17,8 @@ function createXSL(req, res, next) {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     console.log('Handling request ...');
     console.log(tempDir);
-    fs.writeFile(tempDir + 'fop.xsl', req.params.message, (err) => {
+    fs.writeFile(tempDir + '\\fop.xsl', req.params.message, (err) => {
+    console.log(req.params.message);
         if (err) {
             console.log(err);
             throw err;

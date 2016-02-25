@@ -26,7 +26,7 @@ module.exports = function(grunt) {
                      'C:\\Users\\RCH11270\\IdeaProjects\\afpa-ged-proto'],
                     port : 9000,
                     hostname : 'localhost',
-                    livereload : true
+                    livereload : false
                 }
             }
         },

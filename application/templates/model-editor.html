@@ -3,7 +3,7 @@
         <h3 class="panel-title">XSL Model Editor</h3>
     </div>
     <div class="panel-body">
-        <button type="button" class="btn btn-success" ng-click="">
+        <button type="button" class="btn btn-success" ng-click="viewXML=!viewXML;">
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Structure XML
         </button>
         <button type="button" class="btn btn-success" ng-click="generate();">
@@ -15,7 +15,15 @@
             <uib-tab heading="Design">
 
             </uib-tab>
-            <uib-tab heading="XML"><div ui-codemirror="{ onLoad : codemirrorXMLLoaded }"></div></uib-tab>
         </uib-tabset>
     </div>
 </div>
+
+ <div draggable class="panel panel-info" ng-show="viewXML" style="z-index:1000;width:600px;height:400px;position:absolute;top:0%;left:30%;cursor:move">
+     <div class="panel-heading">
+         <h3 class="panel-title">XML Sample</h3>
+     </div>
+     <div class="panel-body">
+         <div ui-codemirror="{ onLoad : codemirrorXMLLoaded }" ui-refresh="viewXML"></div>
+     </div>
+ </div>

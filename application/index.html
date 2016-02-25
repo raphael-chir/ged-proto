@@ -5,6 +5,7 @@
         <title>Initial grunt project</title>
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="bower_components/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
         <link rel="stylesheet" type="text/css" href="css/application.css">
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -17,6 +18,7 @@
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="bower_components/file-saver.js/FileSaver.js"></script>
         <script src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+        <script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
         <script src="js/directives.js"></script>
         <script src="js/services.js"></script>
         <script src="js/app.js"></script>
@@ -24,7 +26,7 @@
     <body>
         <div class="container-fluid">
             <afpa-header></afpa-header>
-            <afpa-model-workspace></afpa-model-workspace>
+            <div ng-view></div>
         </div>
     </body>
 </html>

@@ -76,7 +76,7 @@
           </fo:block>  
            <fo:block>
             <fo:inline>
-				<xsl:value-of select="document/personne/adresse/ville"/> 
+				<xsl:value-of select="document/personne/adresse/code-postal"/> 
 			</fo:inline> 
             <xsl:text>&#160;</xsl:text>
             <fo:inline>
