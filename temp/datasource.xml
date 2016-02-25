@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<document>
+	<afpa>
+		<denomination>AFPA AIN/RHONE-NORD</denomination>
+		<responsable>MME Catherine JOSEPH</responsable>
+		<adresse>
+			<ligne1>Campus de Bourg-en-Bresse</ligne1>
+			<ligne2>17 Route de Seillon</ligne2>
+			<code-postal>01003</code-postal> 
+			<ville>BOURG EN BRESSE CEDEX</ville>
+		</adresse>
+		<telephone>1234567890</telephone>
+		<fax>0123456789</fax>
+		<site-url>www.afpa.fr</site-url>
+	</afpa>
+	<personne>
+		<civilite>M.</civilite>
+		<nom>CLAIRET</nom>
+		<prenom>DAMIEN</prenom>
+		<date-de-naissance>29/04/1978</date-de-naissance>
+		<adresse>
+			<ligne1>1 RUE FRANCOIS MASSE</ligne1>
+			<code-postal>06300</code-postal> 
+			<ville>NICE</ville>
+		</adresse>
+		<formation>Technicien Après Vente Automobile modularisé</formation>
+		<date-entree>22/02/2016</date-entree>
+		<date-fin>16/12/2016</date-fin>
+	</personne>
+</document>
