@@ -26,16 +26,15 @@ gedDirectivesModule.directive('afpaModelWorkspace', function(){
     return {
         restrict:'E',
         templateUrl:'templates/afpa-model-workspace.html',
-        controller: function($scope, $log, gedServices, $http, $timeout){
-             $scope.pdfTmpUrl = "../temp/sample.pdf";
+        controller: function($scope, $log, gedServices, $http, $timeout, appConfig){
+             $scope.pdfTmpUrl = appConfig.pdfTemp;
              $scope.tabs=1;
              $scope.pdfRefreshed=true;
              $scope.codemirrorLoaded = function(_editor){
                 var _doc = _editor.getDoc();
                 _editor.focus();
 
-                gedServices.getXSLT(
-                                         function(success){
+                gedServices.getXSLT(function(success){
                                              var result = '';
                                              for(var i in success){
                                                  if(typeof success[i][0] !== 'undefined')
@@ -61,14 +60,16 @@ gedDirectivesModule.directive('afpaModelWorkspace', function(){
                     $scope.pdfRefreshed=false;
                     $log.debug('Working ...');
                     $log.debug(_editor.getValue());
-                    $http.post('http://127.0.0.1:9999/xsl',{'message' : _editor.getValue()}).then(
-                        function(success){
-                            $log.debug('Control done ...');
-                            $scope.pdfTmpUrl = "../temp/sample.pdf?d="+(new Date()).getTime();
-                            //$timeout( function(){ $scope.pdfRefreshed=true; }, 500);
-                            $scope.pdfRefreshed=true;
-                        },
-                        function(error){});
+                    $log.debug('XSD Service = ' + appConfig.createXSDServiceUrl);
+                    $http.post(appConfig.createXSDServiceUrl,{'message' : _editor.getValue()}).then(
+                                            function(success){
+                                                $log.debug('Control done ...');
+                                                $scope.pdfTmpUrl += "?d="+(new Date()).getTime();
+                                                //$timeout( function(){ $scope.pdfRefreshed=true; }, 500);
+                                                $scope.pdfRefreshed=true;
+                                            },
+                                            function(error){});
+
                 };
               };
 

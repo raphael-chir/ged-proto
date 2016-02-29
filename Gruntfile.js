@@ -22,8 +22,7 @@ module.exports = function(grunt) {
         express : {
             all : {
                 options : {
-                    bases : [ 'C:\\Workspaces\\afpa-ged-proto\\application',
-                     'C:\\Workspaces\\afpa-ged-proto'],
+                    bases : [ 'application', 'data'],
                     port : 9000,
                     hostname : 'localhost',
                     livereload : false
@@ -36,8 +35,7 @@ module.exports = function(grunt) {
                 port: 9000,
                 livereload: 35729,
                 hostname: "localhost",
-                bases : [ 'C:\\Workspaces\\afpa-ged-proto\\application',
-                                    'C:\\Workspaces\\afpa-ged-proto']
+                bases : [ 'application', 'data']
             },
 //            proxies: {
 //                context: "/Northwind",  // When the url contains this...

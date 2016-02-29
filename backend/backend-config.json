@@ -1,0 +1,6 @@
+{
+  "fopCmdPath":"C:\\Workspaces\\afpa-ged-proto\\fop-2.1\\fop.bat",
+  "tempDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\temp\\datasource.xml",
+  "tempXSLPath":"C:\\Workspaces\\afpa-ged-proto\\temp\\fop.xsl",
+  "tempPDFPath":"C:\\Workspaces\\afpa-ged-proto\\temp\\sample.pdf"
+}

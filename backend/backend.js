@@ -1,8 +1,8 @@
 var restify = require('restify');
 var fs = require('fs');
 const exec = require('child_process').exec;
-const tempDir = 'C:\\Workspaces\\afpa-ged-proto\\temp';
-const fopDir = 'C:\\Workspaces\\afpa-ged-proto\\fop-2.1';
+
+var config = JSON.parse(fs.readFileSync('backend-config.json'));
 
 var server = restify.createServer();
 
@@ -16,8 +16,7 @@ function createXSL(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     console.log('Handling request ...');
-    console.log(tempDir);
-    fs.writeFile(tempDir + '\\fop.xsl', req.params.message, (err) => {
+    fs.writeFile(config.tempXSLPath, req.params.message, (err) => {
     console.log(req.params.message);
         if (err) {
             console.log(err);
@@ -25,7 +24,8 @@ function createXSL(req, res, next) {
         }
         console.log('fop.xsl is written ...');
         console.log('Launching fop ...');
-        var cmd = fopDir + '\\fop.bat  -xml '+ tempDir + '\\datasource.xml -xsl ' + tempDir + '\\fop.xsl -pdf ' + tempDir + '\\sample.pdf';
+        var cmd = config.fopCmdPath + ' -xml '+ config.tempDataSourcePath + ' -xsl ' + config.tempXSLPath + ' -pdf ' + config.tempPDFPath;
+        console.log(cmd);
         exec(cmd, (err, stdout, stderr) => {
                 if (err) {
                     console.error(err);

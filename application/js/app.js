@@ -1,5 +1,5 @@
 'use strict';
-var mainModule = angular.module('mainModule', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule', 'ui.grid', 'ui.grid.selection', 'ui.grid.pinning']);
+var mainModule = angular.module('mainModule', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule', 'applicationConfigModule', 'ui.grid', 'ui.grid.selection', 'ui.grid.pinning']);
 
 mainModule.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -49,7 +49,7 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
 
              $scope.gridOptions.multiSelect = true;
 
-             $http.get('/data/students.json')
+             $http.get('mocks/students.json')
                .success(function(data) {
                  $scope.gridOptions.data = data;
                });
