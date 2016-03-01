@@ -10,5 +10,8 @@
     "grunt-contrib-jshint": "~0.7.1",
     "grunt-open": "~0.2.3",
     "http-server": "^0.6.1"
+  },
+  "dependencies": {
+    "fs-extra": "^0.26.5"
   }
 }

@@ -1,6 +1,7 @@
 {
   "fopCmdPath":"C:\\Workspaces\\afpa-ged-proto\\fop-2.1\\fop.bat",
-  "tempDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\temp\\datasource.xml",
-  "tempXSLPath":"C:\\Workspaces\\afpa-ged-proto\\temp\\fop.xsl",
-  "tempPDFPath":"C:\\Workspaces\\afpa-ged-proto\\temp\\sample.pdf"
+  "tempDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\datasource.xml",
+  "tempXSLPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\fop.xsl",
+  "tempPDFPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\sample.pdf",
+  "docModelStorage":"C:\\Workspaces\\afpa-ged-proto\\data\\doc-model"
 }

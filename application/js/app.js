@@ -8,7 +8,7 @@ mainModule.config(['$httpProvider', function($httpProvider) {
 
 mainModule.config(['$routeProvider', function($routeProvider){
     $routeProvider.
-        when('/workspace',{
+        when('/workspace/:mod?',{
             templateUrl:'html/workspace.html'
         }).
         when('/edition',{
@@ -54,5 +54,7 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
                  $scope.gridOptions.data = data;
                });
 
-               $scope.info = {};
+             $scope.info = {};
+
+             $scope.docModel="02ATT54";
            }]);
