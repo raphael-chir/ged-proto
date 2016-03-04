@@ -148,8 +148,6 @@ function generatePdfEdition(req, res, next){
                 return next();
             });
     });
-    res.send(500);
-    return next();
 }
 
 server.post('/xsl', createXSL);

@@ -19,8 +19,8 @@ mainModule.config(['$routeProvider', function($routeProvider){
         });
 }]);
 
-mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeout', 'uiGridConstants', 'appConfig',
-    function ($scope, $http, $log, $timeout, uiGridConstants, appConfig) {
+mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeout', 'uiGridConstants', 'appConfig', '$window',
+    function ($scope, $http, $log, $timeout, uiGridConstants, appConfig, $window) {
              $scope.gridOptions = {
                enableRowSelection: true,
                enableSelectAll: true,
@@ -81,6 +81,7 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
                 $http.post(appConfig.generateEditionServiceUrl,{'selection' : $scope.gridApi.selection.getSelectedRows(), 'docModel' :$scope.docModel}).then(
                 function(success){
                     $log.debug('success');
+                    $window.open('http://localhost:9000/temp/edition.pdf', 'Editions' , 'width=600,height=850');
                 }
                 ,function(error){});
                     $log.debug('success');

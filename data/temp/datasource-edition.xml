@@ -32,4 +32,49 @@
 		<date-entree>22/02/2016</date-entree>
 		<date-fin>22/07/2016</date-fin>
 	</personne>
+	<personne>
+		<civilite>M.</civilite>
+		<nom>PEYRAMAURE</nom>
+		<prenom>Laurent</prenom>
+		<date-de-naissance>25/12/1984</date-de-naissance>
+		<adresse>
+			<ligne1>11 AV de la Gare</ligne1>
+			<ligne2>LE BOUCHON</ligne2>
+			<code-postal>54000</code-postal>
+			<ville>NANCY</ville>
+		</adresse>
+		<formation>CAP Cuisinier</formation>
+		<date-entree>22/02/2016</date-entree>
+		<date-fin>22/07/2016</date-fin>
+	</personne>
+	<personne>
+		<civilite>M.</civilite>
+		<nom>CHIR</nom>
+		<prenom>Raphaël</prenom>
+		<date-de-naissance>29/03/1976</date-de-naissance>
+		<adresse>
+			<ligne1>15 avenue de Lattre de Tassigny</ligne1>
+			<ligne2>LE ROND POINT</ligne2>
+			<code-postal>57000</code-postal>
+			<ville>METZ</ville>
+		</adresse>
+		<formation>Data scientist</formation>
+		<date-entree>04/03/2016</date-entree>
+		<date-fin>09/09/2016</date-fin>
+	</personne>
+	<personne>
+		<civilite>Mme</civilite>
+		<nom>MARTIN</nom>
+		<prenom>Jeanne</prenom>
+		<date-de-naissance>15/05/1961</date-de-naissance>
+		<adresse>
+			<ligne1>7 rue Victor Hugo</ligne1>
+			<ligne2>LA PLAGE</ligne2>
+			<code-postal>29000</code-postal>
+			<ville>CONCARNEAU</ville>
+		</adresse>
+		<formation>Puericulture</formation>
+		<date-entree>12/07/2016</date-entree>
+		<date-fin>16/12/2016</date-fin>
+	</personne>
 </document>
