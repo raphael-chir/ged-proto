@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<afpa>
+		<denomination>
+			<ligne1>AFPA RHONE-ALPES</ligne1>
+			<ligne2>CENTRE DE BOURG EN BRESSE</ligne2>
+		</denomination>
+		<responsable>MME Catherine JOSEPH</responsable>
+		<adresse>
+			<ligne1>AFPA AIN/RHONE-NORD</ligne1>
+			<ligne2>Campus de Bourg-en-Bresse</ligne2>
+			<ligne3>17 Route de Seillon</ligne3>
+			<code-postal>01003</code-postal>
+			<ville>BOURG EN BRESSE CEDEX</ville>
+		</adresse>
+		<telephone>1234567890</telephone>
+		<fax>0123456789</fax>
+		<site-url>www.afpa.fr</site-url>
+	</afpa>
+	<personne>
+		<civilite>M.</civilite>
+		<nom>CLAIRET</nom>
+		<prenom>Damien</prenom>
+		<date-de-naissance>05/02/1978</date-de-naissance>
+		<adresse>
+			<ligne1>1 RUE FRANCOIS MASSE</ligne1>
+			<ligne2>LE VAUBAN</ligne2>
+			<code-postal>06300</code-postal>
+			<ville>NICE</ville>
+		</adresse>
+		<formation>Technicien Après Vente Automobile modularisé</formation>
+		<date-entree>22/02/2016</date-entree>
+		<date-fin>22/07/2016</date-fin>
+	</personne>
+</document>

@@ -19,8 +19,8 @@ mainModule.config(['$routeProvider', function($routeProvider){
         });
 }]);
 
-mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeout', 'uiGridConstants',
-    function ($scope, $http, $log, $timeout, uiGridConstants) {
+mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeout', 'uiGridConstants', 'appConfig',
+    function ($scope, $http, $log, $timeout, uiGridConstants, appConfig) {
              $scope.gridOptions = {
                enableRowSelection: true,
                enableSelectAll: true,
@@ -34,13 +34,15 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
                { name: 'offre', displayName:'Offre', width:70},
                { name: 'numero-stagiaire', displayName:'Client Stagiaire', width:150, pinnedLeft:true},
                { name: 'numero-resa', displayName:'N° RESA', width:100},
+               { name: 'civilite', displayName:'Civilité', width:100, pinnedLeft:true },
                { name: 'nom', displayName:'Nom', width:100, pinnedLeft:true },
                { name: 'prenom', displayName:'Prénom', width:100, pinnedLeft:true},
                { name: 'mesure', displayName:'Mesure', width:100},
                { name: 'convention', displayName:'Convention', width:120},
                { name: 'remu', displayName:'Rému', width:100},
-               { name: 'date-debut', displayName:'Date début', width:100},
-               { name: 'date-fin', displayName:'Date fin', width:100},
+               { name: 'dateDebut', displayName:'Date début', width:100},
+               { name: 'dateFin', displayName:'Date fin', width:100},
+               { name: 'intituleFormation', displayName:'Formation', width:150},
                { name: 'statut', displayName:'Statut', width:100},
                { name: 'courrier', displayName:'Courrier', width:100},
                { name: 'alea', displayName:'Aléa', width:100},
@@ -48,6 +50,20 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
              ];
 
              $scope.gridOptions.multiSelect = true;
+
+            $scope.gridOptions.onRegisterApi = function(gridApi){
+              //set gridApi on scope
+              $scope.gridApi = gridApi;
+              gridApi.selection.on.rowSelectionChanged($scope,function(row){
+                var msg = 'row selected ' + row.isSelected;
+                $log.log(msg);
+              });
+
+              gridApi.selection.on.rowSelectionChangedBatch($scope,function(rows){
+                var msg = 'rows changed ' + rows.length;
+                $log.log(msg);
+              });
+            };
 
              $http.get('mocks/students.json')
                .success(function(data) {
@@ -57,4 +73,17 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
              $scope.info = {};
 
              $scope.docModel="02ATT54";
+
+             $scope.generatePDF = function(){
+                $log.debug('Generate PDF');
+                $log.debug($scope.gridApi.selection.getSelectedRows());
+                if($scope.gridApi.selection.getSelectedRows() && $scope.gridApi.selection.getSelectedRows().length != 0 ){
+                $http.post(appConfig.generateEditionServiceUrl,{'selection' : $scope.gridApi.selection.getSelectedRows(), 'docModel' :$scope.docModel}).then(
+                function(success){
+                    $log.debug('success');
+                }
+                ,function(error){});
+                    $log.debug('success');
+                }
+             }
            }]);

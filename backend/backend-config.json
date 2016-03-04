@@ -3,5 +3,7 @@
   "tempDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\datasource.xml",
   "tempXSLPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\fop.xsl",
   "tempPDFPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\sample.pdf",
-  "docModelStorage":"C:\\Workspaces\\afpa-ged-proto\\data\\doc-model"
+  "docModelStorage":"C:\\Workspaces\\afpa-ged-proto\\data\\doc-model",
+  "tempSelectedDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\datasource-edition.xml",
+  "tempEditionPdfPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\edition.pdf"
 }
