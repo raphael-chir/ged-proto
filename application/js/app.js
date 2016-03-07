@@ -1,5 +1,5 @@
 'use strict';
-var mainModule = angular.module('mainModule', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule', 'applicationConfigModule', 'ui.grid', 'ui.grid.selection', 'ui.grid.pinning']);
+var mainModule = angular.module('mainModule', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ui.codemirror', 'gedServicesModule', 'gedDirectivesModule', 'applicationConfigModule', 'ui.grid', 'ui.grid.selection', 'ui.grid.pinning', 'dndLists']);
 
 mainModule.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -14,8 +14,11 @@ mainModule.config(['$routeProvider', function($routeProvider){
         when('/edition',{
             templateUrl:'html/edition.html'
         }).
+        when('/home',{
+            templateUrl:'html/home.html'
+        }).
         otherwise({
-            redirectTo: '/edition'
+            redirectTo: '/home'
         });
 }]);
 
@@ -74,17 +77,27 @@ mainModule.controller('editionController',  ['$scope', '$http', '$log', '$timeou
 
              $scope.docModel="02ATT54";
 
+             $scope.pdfTmpUrl = appConfig.pdfGeneratedEdition;
+             $scope.pdfRefreshed=true;
+
              $scope.generatePDF = function(){
                 $log.debug('Generate PDF');
+                $scope.pdfRefreshed=false;
                 $log.debug($scope.gridApi.selection.getSelectedRows());
                 if($scope.gridApi.selection.getSelectedRows() && $scope.gridApi.selection.getSelectedRows().length != 0 ){
                 $http.post(appConfig.generateEditionServiceUrl,{'selection' : $scope.gridApi.selection.getSelectedRows(), 'docModel' :$scope.docModel}).then(
                 function(success){
                     $log.debug('success');
-                    $window.open('http://localhost:9000/temp/edition.pdf', 'Editions' , 'width=600,height=850');
+                    $scope.pdfTmpUrl += "?d="+(new Date()).getTime();
+                    $scope.pdfRefreshed=true;
+
                 }
                 ,function(error){});
                     $log.debug('success');
                 }
+             }
+
+             $scope.print = function(){
+                  $window.open('http://localhost:9000/temp/edition.pdf', 'Editions' , 'width=600,height=850');
              }
            }]);

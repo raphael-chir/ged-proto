@@ -9,7 +9,7 @@
         <button type="button" class="btn btn-success" ng-click="generate();">
             <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Aperçu PDF
         </button>
-        <button type="button" class="btn btn-warning" ng-click="generate();">
+        <button type="button" class="btn btn-warning" ng-click="save();">
             <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Sauvegarder le modèle
         </button>
         <div>&nbsp</div>
@@ -18,6 +18,94 @@
                 <div ui-codemirror="{ onLoad : codemirrorXSLLoaded }" ng-model="xslContent" ui-refresh="xslLoaded" ></div>
             </uib-tab>
             <uib-tab heading="Design">
+                <br/><br/>
+                <div class="nestedDemo">
+                    <!-- Markup for lists inside the dropzone. It's inside a seperate template
+                         because it will be used recursively. The dnd-list directive enables
+                         to drop elements into the referenced array. The dnd-draggable directive
+                         makes an element draggable and will transfer the object that was
+                         assigned to it. If an element was dragged away, you have to remove
+                         it from the original list yourself using the dnd-moved attribute -->
+                    <script type="text/ng-template" id="list.html">
+                        <ul dnd-list="list">
+                            <li ng-repeat="item in list"
+                                dnd-draggable="item"
+                                dnd-effect-allowed="move"
+                                dnd-moved="list.splice($index, 1)"
+                                dnd-selected="models.selected = item"
+                                ng-class="{selected: models.selected === item}"
+                                ng-include="item.type + '.html'">
+                            </li>
+                        </ul>
+                    </script>
+
+                    <!-- This template is responsible for rendering a container element. It uses
+                         the above list template to render each container column -->
+                    <script type="text/ng-template" id="container.html">
+                        <div class="container-element box box-blue">
+                            <h3>&lt;fo:block-container&gt;#{{item.id}}</h3>
+                            <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </script>
+
+                    <!-- Template for a normal list item -->
+                    <script type="text/ng-template" id="item.html">
+                        <div class="item">&lt;fo:block&gt;#{{item.id}}</div>
+                    </script>
+
+                    <!-- Template for a normal list item -->
+                    <script type="text/ng-template" id="header.html">
+                        <div class="header">Entête de courrier AFPA</div>
+                    </script>
+
+                    <!-- Sidebar -->
+                    <div class="col-md-2">
+                        <div class="toolbox box box-grey box-padding">
+                            <h3>Toolbox</h3>
+                            <ul>
+                                <!-- The toolbox only allows to copy objects, not move it. After a new
+                                     element was created, dnd-copied is invoked and we generate the next id -->
+                                <li ng-repeat="item in models.templates"
+                                    dnd-draggable="item"
+                                    dnd-effect-allowed="copy"
+                                    dnd-copied="item.id = item.id + 1">
+                                    <button type="button" class="btn btn-success btn-lg" >
+                                        <span class="glyphicon glyphicon-{{item.symbol}}" aria-hidden="true"></span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--
+                        <div ng-if="models.selected" class="box box-grey box-padding">
+                            <h3>Selected</h3>
+                            <strong>Type: </strong> {{models.selected.type}}<br>
+                            <input type="text" ng-model="models.selected.id" class="form-control" style="margin-top: 5px" />
+                        </div>
+                        -->
+                        <div class="trashcan box box-grey box-padding">
+                            <!-- If you use [] as referenced list, the dropped elements will be lost -->
+                            <h3>Trash</h3>
+                            <ul dnd-list="[]">
+                                <li><img src="images/trashcan.jpg"></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Main area with dropzones and source code -->
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div ng-repeat="(zone, list) in models.dropzones" >
+                                <div class="dropzone box box-yellow">
+                                    <!-- The dropzone also uses the list template -->
+
+                                    <div ng-include="'list.html'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </uib-tab>
         </uib-tabset>

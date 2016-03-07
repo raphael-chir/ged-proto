@@ -53,6 +53,16 @@ gedDirectivesModule.directive('afpaModelWorkspace', function(){
                                               },
                                               function(error){});
                   };
+
+                  $scope.save = function(){
+                      $log.debug('Save ');
+                      $log.debug('XSD Service = ' + appConfig.createXSDServiceUrl);
+                      $http.post(appConfig.saveModelServiceUrl,{'message' : _editor.getValue(), 'docModel' : $routeParams.mod}).then(
+                                              function(success){
+                                                $log.debug('Save done ...');
+                                              },
+                                              function(error){});
+                  };
              };
              $scope.codemirrorXMLLoaded = function(_editor){
                 var _doc = _editor.getDoc();
@@ -97,6 +107,90 @@ gedDirectivesModule.directive('afpaModelWorkspace', function(){
                                   }
                               );
                 };
+
+
+    $scope.models = {
+        selected: null,
+        templates: [
+            {type: "header", id: 3, symbol:"header"},
+            {type: "item", id: 2, symbol:"pencil"},
+            {type: "container", id: 1, columns: [[], []], symbol:"inbox"}
+        ],
+         dropzones: {
+                    "B": [
+                        {
+                            "type": "header",
+                            "id": 1
+                        },
+                        {
+                            "type": "item",
+                            "id": "8"
+                        },
+                        {
+                            "type": "container",
+                            "id": "1",
+                            "columns": [
+                                [
+                                    {
+                                        "type": "item",
+                                        "id": "9"
+                                    },
+                                    {
+                                        "type": "item",
+                                        "id": "10"
+                                    },
+                                    {
+                                        "type": "item",
+                                        "id": "11"
+                                    }
+                                ],
+                                [
+                                    {
+                                        "type": "item",
+                                        "id": "12"
+                                    },
+                                    {
+                                        "type": "container",
+                                        "id": "3",
+                                        "columns": [
+                                            [
+                                                {
+                                                    "type": "item",
+                                                    "id": "13"
+                                                }
+                                            ],
+                                            [
+                                                {
+                                                    "type": "item",
+                                                    "id": "14"
+                                                }
+                                            ]
+                                        ]
+                                    },
+                                    {
+                                        "type": "item",
+                                        "id": "15"
+                                    },
+                                    {
+                                        "type": "item",
+                                        "id": "16"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "type": "item",
+                            "id": 16
+                        }
+                    ]
+                }
+        };
+
+
+    $scope.$watch('models.dropzones', function(model) {
+        $scope.modelAsJson = angular.toJson(model, true);
+    }, true);
+
             }
         }
 });

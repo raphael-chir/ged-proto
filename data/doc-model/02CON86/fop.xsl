@@ -78,9 +78,11 @@
                 </fo:block-container>
              </fo:static-content>          
            <fo:flow flow-name="xsl-region-body">
+             <fo:block-container font-size="10pt" width="100%" top="8cm" left="0cm" position="absolute">
                <fo:block>
                    Association nationale pour la formation professionnelle des adultes
                </fo:block>
+             </fo:block-container>
            </fo:flow>
         </fo:page-sequence>
     </fo:root>

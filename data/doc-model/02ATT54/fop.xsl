@@ -6,6 +6,7 @@
   <xsl:output method="xml" indent="yes"/>
   <xsl:template match="/">
 	<fo:root>
+      <!-- Add comment-->
 		<fo:layout-master-set>
         	<fo:simple-page-master master-name="A4-portrait"
               page-height="29.7cm" page-width="21.0cm" margin-left="2cm" margin-top="1cm" margin-bottom="1cm">
