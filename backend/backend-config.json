@@ -1,5 +1,5 @@
 {
-  "fopCmdPath":"/front-stack/afpa-ged-proto/fop-2.1/fop.bat",
+  "fopCmdPath":"/front-stack/afpa-ged-proto/fop-2.1/fop",
   "tempDataSourcePath":"/front-stack/afpa-ged-proto/data/temp/datasource.xml",
   "tempXSLPath":"/front-stack/afpa-ged-proto/data/temp/fop.xsl",
   "tempPDFPath":"/front-stack/afpa-ged-proto/data/temp/sample.pdf",
