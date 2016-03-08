@@ -1,9 +1,9 @@
 {
-  "fopCmdPath":"C:\\Workspaces\\afpa-ged-proto\\fop-2.1\\fop.bat",
-  "tempDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\datasource.xml",
-  "tempXSLPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\fop.xsl",
-  "tempPDFPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\sample.pdf",
-  "docModelStorage":"C:\\Workspaces\\afpa-ged-proto\\data\\doc-model",
-  "tempSelectedDataSourcePath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\datasource-edition.xml",
-  "tempEditionPdfPath":"C:\\Workspaces\\afpa-ged-proto\\data\\temp\\edition.pdf"
+  "fopCmdPath":"/front-stack/afpa-ged-proto/fop-2.1/fop.bat",
+  "tempDataSourcePath":"/front-stack/afpa-ged-proto/data/temp/datasource.xml",
+  "tempXSLPath":"/front-stack/afpa-ged-proto/data/temp/fop.xsl",
+  "tempPDFPath":"/front-stack/afpa-ged-proto/data/temp/sample.pdf",
+  "docModelStorage":"/front-stack/afpa-ged-proto/data/doc-model",
+  "tempSelectedDataSourcePath":"/front-stack/afpa-ged-proto/data/temp/datasource-edition.xml",
+  "tempEditionPdfPath":"/front-stack/afpa-ged-proto/data/temp/edition.pdf"
 }
