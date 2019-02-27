@@ -110,11 +110,11 @@
                  </fo:block>
                </fo:block-container> 
                <fo:block-container width="13.5cm" top="11cm" left="1cm" position="absolute" font-size="10pt">
-                <fo:block>
-                  Né (e) le : 
-                  <xsl:value-of select="date-de-naissance"/> 
-                </fo:block>               
-               </fo:block-container>
+                 <fo:block>
+                   Né(e) le : 
+                   <xsl:value-of select="date-de-naissance"/> 
+                 </fo:block>
+               </fo:block-container> 
                <fo:block-container width="13.5cm" top="12cm" left="1cm" position="absolute" font-size="10pt">
                  <fo:block>
                    demeurant : 
